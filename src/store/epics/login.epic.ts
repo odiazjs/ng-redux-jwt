@@ -24,8 +24,12 @@ export class LoginEpics {
   login = (action$: any, store: any): Observable<Action> => {
     return action$
       .ofType(LoginActions.LOGIN)
-      .map(() => {
-          
+      .map((model) => {
+          // login request handle errors bla
+        return {
+            type: LoginActions.LOGIN_SUCCESS,
+            payload: 'authinfo'
+        }
       })
   }
 }

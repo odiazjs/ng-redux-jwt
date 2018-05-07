@@ -25,6 +25,6 @@ export class StoreModule {
             InitialState,
             [ ...epics.createEpics() ]
         )
-        persistStore( ngRedux )
+        persistStore( ngRedux, () => ngRedux.getState() )
     }
 }
