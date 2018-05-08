@@ -2,8 +2,8 @@
 An angular 2 JSON Web Token handling login authentication with Redux flow architecture, simply ready to be bind into any custom UI component.
 
 ## A sample login form
-It already comes with a basic HTML Login form with a LoginModel bidned to it.
-```
+It already comes with a basic HTML Login form with a LoginModel binded to it.
+```html
 <div class="container">
   <div>Username</div>
   <input type="text" placeholder="username" [(ngModel)]="model.username" />
@@ -17,7 +17,7 @@ It already comes with a basic HTML Login form with a LoginModel bidned to it.
 
 ## Setup a config file
 Simply replace the configuration properties with your API/backend.
-```
+```javascript
 export default {
     "protocol": "https",
     "scheme": "Bearer",
@@ -33,7 +33,7 @@ export default {
 
 ## This is Epic!
 A login epic ready to go!
-```
+```javascript
 login = (action$: any, store: any): Observable<Action> => {
     return action$.ofType(LoginActions.LOGIN)
       .concatMap((result: ReduxAction<LogInModel>) => {
@@ -49,7 +49,7 @@ login = (action$: any, store: any): Observable<Action> => {
 ## Token Interceptor
 A ready to be used Token Interceptor that adds the token to every http request, it knows
 how to go and get the token from the redux login store.
-```
+```javascript
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
     @select( 'login' )
