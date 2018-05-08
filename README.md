@@ -1,6 +1,8 @@
 # ngrx-jwt-auth
 An angular 2 JSON Web Token handling login authentication with Redux flow architecture, simply ready to be bind into any custom UI component.
 
+![alt text](http://url/to/img.png)
+
 ## A sample login form
 It already comes with a basic HTML Login form with a LoginModel binded to it.
 ```html

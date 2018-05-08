@@ -9,7 +9,10 @@
   <input type="text" placeholder="username" [(ngModel)]="model.username" />
   <div>Password</div>
   <input type="password" placeholder="password" [(ngModel)]="model.password" />
+  <div class="login">
+    <input class="btn" type="button" value="Login" (click)="login()"/>
+  </div>
   <div class="container">
-    <input type="button" value="Login" (click)="login()"/>
+    <pre><code>{{ parseJwtInfo() | async }}</code></pre>
   </div>
 </div>
