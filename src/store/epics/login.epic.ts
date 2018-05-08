@@ -24,15 +24,12 @@ import { AuthService } from 'src/services/auth.service';
 @Injectable()
 export class LoginEpics {
   constructor(private authService: AuthService) {}
-
   createEpics() {
     return [createEpicMiddleware(this.login)]
   }
-
   login = (action$: any, store: any): Observable<Action> => {
-    return action$
-      .ofType(LoginActions.LOGIN)
-      .flatMap((result: ReduxAction<LogInModel>) => {
+    return action$.ofType(LoginActions.LOGIN)
+      .concatMap((result: ReduxAction<LogInModel>) => {
         const { payload } = result
         return this.authService.login(payload)
             .map((jwtInfo: JwtInfo) => {

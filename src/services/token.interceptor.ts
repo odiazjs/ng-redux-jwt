@@ -16,18 +16,18 @@ import { config } from 'src/config';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-    @select('login')
+    @select( 'login' )
     loginStore: Observable<JwtInfo>
     intercept ( request: HttpRequest<any>, next: HttpHandler ): Observable<HttpEvent<any>> {
-        this.loginStore.subscribe((jwtInfo: JwtInfo) => {
+        this.loginStore.subscribe( ( jwtInfo: JwtInfo ) => {
             const { token } = jwtInfo
-            const authConfig = config(configFile)
+            const authConfig = config( configFile )
             request = request.clone( {
                 setHeaders: {
-                    Authorization: `${authConfig.scheme} ${ token }`
+                    Authorization: `${ authConfig.scheme } ${ token }`
                 }
             } )
-        })
+        } )
         return next.handle( request );
     }
 }

@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '../store/module'
 import { LoginEpics } from '../store/epics/login.epic';
 import { LoginActions } from '../store/actions/login.actions';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from 'src/services/token.interceptor';
+import { AuthService } from 'src/services/auth.service';
 
 const APP_COMMON_MODULES = [
   BrowserModule,
@@ -19,7 +22,16 @@ const APP_COMMON_MODULES = [
 @NgModule( {
   declarations: [AppComponent],
   imports: [...APP_COMMON_MODULES],
-  providers: [LoginEpics, LoginActions],
+  providers: [
+    LoginEpics,
+    LoginActions,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [ AppComponent ]
 } )
 export class AppModule { }
