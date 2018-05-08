@@ -1,5 +1,3 @@
-import { Http } from "@angular/http";
-
 export const DEFAULT_PROTOCOL = 'https'
 export const DEFAULT_AUTH_SCHEME = 'Bearer'
 

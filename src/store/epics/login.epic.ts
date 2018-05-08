@@ -32,8 +32,11 @@ export class LoginEpics {
       .concatMap((result: ReduxAction<LogInModel>) => {
         const { payload } = result
         return this.authService.login(payload)
-            .map((jwtInfo: JwtInfo) => {
-                return LoginActions.success(jwtInfo)
+            .map((response: any) => {
+                if ( response.error ) {
+                    return LoginActions.failed(response.error)
+                }
+                return LoginActions.success(response)
             })
       })
   }

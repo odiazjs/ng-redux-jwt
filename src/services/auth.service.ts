@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of'
 import 'rxjs/add/observable/from'
@@ -8,10 +8,11 @@ import { JwtInfo } from 'src/store/types';
 import { LogInModel } from 'src/models/login.model';
 import { config } from 'src/config';
 import configFile from 'src/config.file';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
-    constructor ( private http: Http ) { }
+    constructor ( private http: HttpClient ) { }
     login ( loginModel: LogInModel ): Observable<JwtInfo> {
         const { protocol,  urlConfig: { baseUrl, version, loginEndpoint } } = config(configFile)
         const loginUrl = `${protocol}://${baseUrl}/${version}/${loginEndpoint}`
@@ -22,7 +23,7 @@ export class AuthService {
             .map( ( response: any ) => {
                 // add your own jwt decode implementation
                 // and/or error mapping/handling here
-                return response.json()
+                return response
             } )
     }
 }

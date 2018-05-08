@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
 // store
@@ -11,11 +10,12 @@ import { LoginActions } from '../store/actions/login.actions';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/services/token.interceptor';
 import { AuthService } from 'src/services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const APP_COMMON_MODULES = [
   BrowserModule,
   FormsModule,
-  HttpModule,
+  HttpClientModule,
   StoreModule
 ]
 
