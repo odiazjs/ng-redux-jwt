@@ -23,7 +23,7 @@ export default {
     "scheme": "Bearer",
     "urlConfig": {
         "version": "v1",
-        "baseUrl": "fluyo.ngrok.io/api",
+        "baseUrl": "backend.sample.io/api",
         "loginEndpoint": "auth/token",
         "logoutEndpoint": "auth/logout",
         "refreshTokenEndpoint": "auth/refresh"
