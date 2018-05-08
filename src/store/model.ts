@@ -3,7 +3,6 @@ import { LoginState, JWT_INITIAL_STATE, AUTH_INITIAL_STATE } from './reducers/lo
 export interface AppState {
   login: LoginState
 }
-
 export const InitialState: AppState = {
   login: {
       jwtInfo: JWT_INITIAL_STATE,
