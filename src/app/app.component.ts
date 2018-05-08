@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { dispatch, select } from '@angular-redux/store';
-import { LoginActions } from 'src/store/actions/login.actions';
+import { LoginActions } from '../store/actions/login.actions';
 import { Observable } from 'rxjs/internal/Observable';
+import { LogInModel } from '../models/login.model';
 
 @Component( {
   selector: 'app-root',
@@ -10,24 +11,14 @@ import { Observable } from 'rxjs/internal/Observable';
 } )
 export class AppComponent {
   title = 'Ng redux JWT Auth';
-  model = {
-    username: '',
-    password: ''
-  }
-  @select('loginDetails')
-  loginDetails: Observable<any>
-
-  constructor () {}
+  model = new LogInModel();
 
   login () {
     this.startLogin(this.model)
   }
 
   @dispatch()
-  startLogin(model: {username: string, password: string}) {
-    return {
-      type: LoginActions.LOGIN,
-      payload: model
-    }
+  startLogin(model: LogInModel) {
+    return LoginActions.login(model)
   }
 }
